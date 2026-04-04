@@ -3,161 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Psicología Deportiva | Proyecto K</title>
+    <title>K | Psicología Deportiva y Rendimiento</title>
     <style>
-        /* VARIABLES: Edita los colores aquí fácilmente */
         :root {
-            --bg-color: #e0e5ec;
-            --main-title: #2d3436;
-            --accent-blue: #448aff;
-            --accent-red: #ff5252;
-            --shadow-dark: #a3b1c6;
+            --bg: #e0e5ec;
+            --text: #31344b;
+            --accent: #448aff;
+            --warning: #ff5252;
+            --shadow-dark: #b8bec5;
             --shadow-light: #ffffff;
-            --text-color: #4a4a4a;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
         }
 
-        /* Estilo Neumórfico para las tarjetas */
-        .neu-card {
-            background: var(--bg-color);
-            border-radius: 30px;
-            box-shadow: 9px 9px 16px var(--shadow-dark), 
-                       -9px -9px 16px var(--shadow-light);
+        /* Estilo de Tarjetas Neumórficas */
+        .card {
+            background: var(--bg);
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px var(--shadow-dark), 
+                       -10px -10px 20px var(--shadow-light);
             padding: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        h1 { color: var(--main-title); font-size: 2.5rem; text-align: center; }
-        h2 { color: var(--accent-blue); }
-        h3 { color: var(--accent-red); margin-bottom: 10px; }
+        h1 { font-size: 2.2rem; text-align: center; color: var(--accent); }
+        h2 { border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
         /* Narrativa Visual */
-        .narrative-item {
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 20px;
-            margin: 25px 0;
-        }
-
-        .highlight-red { border-left-color: var(--accent-red); }
-
-        /* Pestaña Interactiva (Acordeón Moderno) */
-        .tab-section {
-            width: 100%;
-        }
-
-        details {
-            background: var(--bg-color);
+        .item {
+            padding: 15px;
             border-radius: 15px;
-            box-shadow: 5px 5px 10px var(--shadow-dark), 
-                       -5px -5px 10px var(--shadow-light);
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                        inset -4px -4px 8px var(--shadow-light);
+        }
+
+        .burnout-alert { color: var(--warning); font-weight: bold; }
+
+        /* Pestaña Interactiva */
+        details {
+            margin-top: 20px;
+            cursor: pointer;
         }
 
         summary {
-            padding: 20px;
+            padding: 15px;
+            background: var(--accent);
+            color: white;
+            border-radius: 10px;
             font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
             list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
         }
 
-        summary::after {
-            content: "▼";
-            font-size: 0.8rem;
-            color: var(--accent-blue);
+        .content-tab {
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: inset 2px 2px 5px var(--shadow-dark);
         }
 
-        details[open] summary::after { content: "▲"; }
-
-        .tab-content {
-            padding: 0 20px 20px 20px;
-            font-size: 1rem;
-            color: var(--text-color);
-            line-height: 1.6;
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            background: var(--bg-color);
-            box-shadow: inset 2px 2px 5px var(--shadow-dark), 
-                        inset -2px -2px 5px var(--shadow-light);
-        }
-
     </style>
 </head>
 <body>
 
 <div class="container">
 
-    <header class="neu-card">
-        <h1>Pérdida de motivación por adversidades externas</h1>
-        <p>La motivación deportiva es un equilibrio frágil. A menudo, el muro más alto no es nuestra propia capacidad física, sino los factores externos —presión social, problemas familiares o climas tóxicos de entrenamiento— que terminan por apagar la chispa del atleta.</p>
+    <header class="card">
+        <h1>Pérdida de Motivación por Adversidades Externas</h1>
+        <p>La psicología deportiva define este fenómeno como una desconexión entre el atleta y su entorno. Cuando las presiones externas superan los recursos internos, la pasión se convierte en carga.</p>
     </header>
 
-    <section class="neu-card">
-        <h2>Impacto en el Atleta</h2>
-
-        <div class="narrative-item highlight-red">
-            <span class="tag" style="color: var(--accent-red);">Alerta Crónica</span>
-            <h3>BURNOUT</h3>
-            <p>El síndrome de desgaste profesional es un estado de agotamiento físico, emocional y mental crónico. Es el resultado de un estrés prolongado donde el deportista siente que ya no tiene nada más que dar.</p>
-        </div>
-
-        <div class="narrative-item">
-            <span class="tag" style="color: var(--accent-blue);">Consecuencia Directa</span>
-            <h3>Bajo Rendimiento</h3>
-            <p>Un deportista desmotivado rinde menos, lo que afecta no solo su progreso individual sino también la dinámica de equipos, creando un ciclo de frustración difícil de romper.</p>
-        </div>
-
-        <div class="narrative-item">
-            <span class="tag" style="color: #6c5ce7;">Factor Social</span>
-            <h3>Entorno y Presión</h3>
-            <p>La presión excesiva de padres y entrenadores por ganar, ignorando el disfrute o saltándose etapas de formación, es una causa directa de frustración y abandono en jóvenes.</p>
+    <section class="card">
+        <h2>Factores que conducen al desinterés</h2>
+        <div class="grid">
+            <div class="item">
+                <p class="burnout-alert">BURNOUT</p>
+                <p>Estado de agotamiento físico y mental crónico provocado por el estrés prolongado. No es cansancio, es vacío emocional.</p>
+            </div>
+            <div class="item">
+                <p><strong>Bajo Rendimiento</strong></p>
+                <p>La desmotivación afecta la ejecución técnica y la dinámica de equipo, creando un ciclo de frustración difícil de romper.</p>
+            </div>
+            <div class="item">
+                <p><strong>Entorno y Presión</strong></p>
+                <p>La exigencia excesiva de padres y entrenadores por ganar, ignorando el disfrute, es la causa principal del abandono juvenil.</p>
+            </div>
         </div>
     </section>
 
-    <div class="tab-section">
+    <section class="card">
         <details>
             <summary>Cómo canalizar la desmotivación deportiva</summary>
-            <div class="tab-content">
-                <p>Canalizar la desmotivación requiere transformar la energía negativa en una estrategia de recuperación activa. Aquí te explicamos cómo:</p>
+            <div class="content-tab">
+                <h3>Estrategias de Recalibración</h3>
                 <ul>
-                    <li><strong>Redefinición de metas:</strong> Deja de mirar el trofeo y empieza a mirar el gesto técnico del día.</li>
-                    <li><strong>Comunicación Asertiva:</strong> Aprender a poner límites a la presión externa de padres y entrenadores.</li>
-                    <li><strong>Autocompasión:</strong> Entender que el descanso mental es tan importante como el entrenamiento físico para evitar el burnout.</li>
+                    <li><strong>Redefinir el Éxito:</strong> Cambiar el foco del resultado (ganar) al proceso (mejorar la técnica).</li>
+                    <li><strong>Límites Saludables:</strong> Aprender a comunicar a entrenadores y padres la necesidad de espacios de disfrute.</li>
+                    <li><strong>Descanso Cognitivo:</strong> No todo es entrenar; el cerebro necesita novedad y ocio fuera del deporte para evitar el estancamiento.</li>
                 </ul>
-                <p>Al final, canalizar no es ignorar el problema, es usar esa incomodidad para rediseñar un entorno que sea sostenible para tu salud mental.</p>
             </div>
         </details>
-    </div>
+    </section>
 
-    <footer style="text-align: center; margin-top: 40px; opacity: 0.6;">
-        <p>Proyecto K - 2026 | Psicología del Deporte</p>
+    <footer>
+        <p>Proyecto K &copy; 2026 | Salud Mental en el Deporte</p>
     </footer>
 
 </div>
