@@ -1,35 +1,86 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Psicología Deportiva: Pérdida de Motivación en Atletas</title>
+    <title>Sports Psychology & Motivation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #1a1a1a);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 2em;
+            color: #00bfff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        .accordion {
+            background: #282828;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background 0.3s;
+        }
+        .accordion:hover {
+            background: #333;
+        }
+        .panel {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #1a1a1a;
+        }
+        .active, .accordion:hover {
+            background-color: #444;
+        }
+        .content {
+            margin: 30px 0;
+            font-size: 1.1em;
+        }
+        .neon {
+            text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff;
+        }
+    </style>
+    <script>
+        function toggleAccordion(element) {
+            element.classList.toggle("active");
+            var panel = element.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <h1>Psicología Deportiva</h1>
-        <h2>Pérdida de Motivación en Atletas</h2>
-    </header>
-    <main>
-        <section class="accordion">
-            <h3 class="accordion-header">¿Qué es la Motivación?</h3>
-            <div class="accordion-content">
-                <p>La motivación es la fuerza que impulsa a los atletas a entrenar y competir. Es crucial en el rendimiento deportivo.</p>
-            </div>
-            <h3 class="accordion-header">¿Causas de la Pérdida de Motivación?</h3>
-            <div class="accordion-content">
-                <p>Entre las causas se encuentran la presión del rendimiento, la fatiga y la falta de apoyo.</p>
-            </div>
-            <h3 class="accordion-header">¿Cómo Superar la Pérdida de Motivación?</h3>
-            <div class="accordion-content">
-                <p>Es importante establecer metas realistas, buscar apoyo social y mantener una mentalidad positiva.</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Psicología Deportiva</p>
-    </footer>
-    <script src="script.js"></script>
+    <h1 class="neon">Understanding Sports Psychology</h1>
+    <h2>Loss of Motivation in Athletes</h2>
+    <button class="accordion" onclick="toggleAccordion(this)">What is Sports Psychology?</button>
+    <div class="panel">
+        <div class="content">
+            Sports psychology is a field that harnesses psychological principles to encourage athletes to achieve optimal performance through mental training and emotional support.
+        </div>
+    </div>
+    <button class="accordion" onclick="toggleAccordion(this)">Factors Leading to Loss of Motivation</button>
+    <div class="panel">
+        <div class="content">
+            Loss of motivation can stem from various factors such as burnout, injury, and lack of progress.
+        </div>
+    </div>
+    <button class="accordion" onclick="toggleAccordion(this)">Strategies to Overcome Loss of Motivation</button>
+    <div class="panel">
+        <div class="content">
+            Coaches and psychologists often recommend setting small, manageable goals to rekindle motivation and maintain a positive mindset.
+        </div>
+    </div>
 </body>
 </html>
