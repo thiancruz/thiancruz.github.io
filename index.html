@@ -1,129 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mente en Movimiento | Storytelling</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Estilos personalizados para el flujo tipo "4 Ríos" */
-        .scroll-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            overflow: hidden;
-        }
-
-        .content-layer {
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .is-visible .content-layer {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .bg-zoom {
-            transition: transform 10s linear;
-        }
-
-        .is-visible .bg-zoom {
-            transform: scale(1.1);
-        }
-
-        /* Línea de progreso lateral */
-        .progress-bar {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 50;
-        }
-    </style>
+    <title>Desmotivación Deportiva</title>
 </head>
-<body class="bg-slate-900 text-white font-sans antialiased">
-
-    <div class="progress-bar hidden md:block">
-        <div class="flex flex-col space-y-4">
-            <div class="w-1 h-8 bg-blue-500 rounded-full"></div>
-            <div class="w-1 h-8 bg-slate-700 rounded-full"></div>
-            <div class="w-1 h-8 bg-slate-700 rounded-full"></div>
-        </div>
-    </div>
-
-    <main>
-        <section id="intro" class="scroll-section border-b border-slate-800">
-            <div class="absolute inset-0 z-0">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900 z-10"></div>
-                <img src="https://images.unsplash.com/photo-1502086223501-7ea24ec83abc?auto=format&fit=crop&q=80&w=2000" 
-                     class="w-full h-full object-cover opacity-40 bg-zoom" alt="Cerebro y Conexiones">
-            </div>
-            
-            <div class="relative z-20 text-center px-6 content-layer">
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4 italic">
-                    IMPULSO <span class="text-blue-500">COGNITIVO</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                    ¿Qué sucede en tu arquitectura neuronal cuando decides moverte?
-                </p>
-                <div class="mt-12 animate-bounce">
-                    <p class="text-sm uppercase tracking-widest text-blue-400">Desliza para explorar</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="synapse" class="scroll-section">
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6 z-20 content-layer">
-                <div class="flex flex-col justify-center">
-                    <h2 class="text-4xl font-bold mb-6 border-l-4 border-blue-500 pl-4">Oxigenación Directa</h2>
-                    <p class="text-lg text-slate-300 leading-relaxed">
-                        En el momento en que tu ritmo cardíaco aumenta, el flujo sanguíneo hacia la corteza prefrontal se dispara. No es solo ejercicio; es un baño de nutrientes para tus neuronas.
-                    </p>
-                </div>
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative bg-black rounded-lg p-8">
-                        <div class="text-5xl font-mono text-blue-500 mb-4">+20%</div>
-                        <p class="text-sm text-slate-400 uppercase tracking-widest">Aumento en la captación de oxígeno cerebral</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="growth" class="scroll-section bg-slate-950">
-            <div class="relative z-20 max-w-4xl mx-auto px-6 text-center content-layer">
-                <h2 class="text-5xl font-black mb-8 italic">Neurogénesis: Cultivando Mañana</h2>
-                <div class="bg-blue-600/10 border border-blue-500/30 p-10 rounded-2xl backdrop-blur-md">
-                    <p class="text-2xl italic text-blue-100">
-                        "El ejercicio físico es el fertilizante más potente para el hipocampo, el centro de la memoria y el aprendizaje."
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Lógica de detección de scroll para activar animaciones
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+<body>
+    <h1>Desmotivación Deportiva</h1>
+    <section>
+        <h2>Burnout</h2>
+        <p>El burnout es un estado de agotamiento físico, emocional y mental que puede afectar a los deportistas. A menudo ocurre cuando hay una falta de equilibrio entre el deporte y otras áreas de la vida.</p>
+    </section>
+    <section>
+        <h2>Bajo Rendimiento</h2>
+        <p>El bajo rendimiento puede deberse a varios factores, incluido el cansancio físico y emocional. Es importante identificar las causas subyacentes para poder abordarlas adecuadamente.</p>
+    </section>
+    <section>
+        <h2>Presión Externa</h2>
+        <p>La presión de entrenadores, familiares y la sociedad puede contribuir a la desmotivación en los deportistas. Es esencial gestionar estas expectativas de manera saludable.</p>
+    </section>
+    <section>
+        <h2>Soluciones para Manejar la Desmotivación Deportiva</h2>
+        <p>Algunas estrategias incluyen hablar con entrenadores o psicólogos deportivos, establecer metas realistas y mantener un equilibrio entre el deporte y la vida personal.</p>
+    </section>
 </body>
 </html>
