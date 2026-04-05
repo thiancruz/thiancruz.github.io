@@ -1,47 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K | Mental Performance Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020408;
+            --neon-cyan: #00f2ff;
+            --neon-purple: #bc13fe;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 5% 10%, rgba(0, 242, 255, 0.08) 0%, transparent 35%),
+                radial-gradient(circle at 95% 90%, rgba(188, 19, 254, 0.08) 0%, transparent 35%);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 850px; margin: 0 auto; }
+
+        /* HEADER */
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
+            text-align: center;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
+        }
+
+        /* CARDS */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-block { margin-bottom: 25px; padding-left: 15px; border-left: 2px solid var(--neon-purple); }
+        .info-block strong { color: var(--neon-purple); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+
+        /* ACORDEÓN TIPO TAB */
+        .tab-trigger {
+            width: 100%;
+            background: linear-gradient(90deg, rgba(188, 19, 254, 0.2), transparent);
+            border: 1px solid var(--neon-purple);
+            padding: 20px;
+            border-radius: 15px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .tab-trigger:hover { background: rgba(188, 19, 254, 0.3); box-shadow: 0 0 15px rgba(188, 19, 254, 0.4); }
+
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            background: rgba(255,255,255,0.02);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .panel-content { padding: 25px; color: #ced4da; }
+
+        ul { list-style: none; }
+        li { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        li::before { content: "›"; position: absolute; left: 0; color: var(--neon-cyan); font-weight: bold; font-size: 1.5rem; line-height: 1; }
+
+        footer { text-align: center; margin-top: 50px; opacity: 0.4; font-size: 0.8rem; letter-spacing: 3px; }
+
+    </style>
 </head>
 <body>
-    <p class="neon texto-centrado">DESMOTIVACION EN DEPORTITAS</p>
-    <p class="neon texto-centrado" onclick="toggleAccordion(this)">¿QUE ES LA PSICOLOGIA DEPORTIVA?</p>
-    <p class="neon texto-centrado" onclick="toggleAccordion(this)" style="cursor: pointer;">
-    ¿QUÉ ES LA PSICOLOGÍA DEPORTIVA?
-</p>
-    <div class="panel">
-        <div class="content">
-            es la disciplina que estudia los procesos cognitivos, emocionales y conductuales de las personas en el contexto del deporte y la actividad física. Su objetivo no es solo mejorar el rendimiento en la cancha, sino también garantizar el bienestar mental del atleta.
-@@ -80,15 +82,15 @@
-<li>El Beneficio: Al cumplir pequeñas metas diarias, el cerebro recupera la sensación de control y competencia.</li>
-            <br>
-           <br> 2. Recuperación Activa y Descanso Cognitivo<br>
-El burnout ocurre porque el sistema nervioso está saturado.<br> Seguir entrenando al mismo ritmo solo empeora el cuadro.<br>
-El burnout ocurre porque el sistema nervioso está saturado.Seguir entrenando al mismo ritmo solo empeora el cuadro.<br>
-            <br>
-<li>La Estrategia: Aplica periodos de "desconexión total". Realiza actividades físicas que no tengan relación con tu deporte principal y que sean puramente recreativas (senderismo, natación suave, juegos de equipo sin marcador).</li>
-<li>El Beneficio: Reduce los niveles de cortisol y permite que la mente "extrañe" la disciplina principal.</li>
-            <br>
-           <br> 3. Comunicación y Límites con el Entorno<br> Si la causa es la presión externa de padres o entrenadores, el silencio es el mayor enemigo.<br>
-            <br>
-<li>La Estrategia: Establece una conversación honesta. Explica que la presión actual está afectando tu rendimiento. El deportista necesita sentir que tiene autonomía sobre su carrera, no que es un títere de las expectativas de otros.</li>
-<li>>El Beneficio: Aligera la carga emocional y reequilibra la dinámica de poder en la relación deportista-entrenador.</li>
-<li>El Beneficio: Aligera la carga emocional y reequilibra la dinámica de poder en la relación deportista-entrenador.</li>
-            <br>
-           <br> 4. Visualización Positiva (Reconexión con el "Porqué")<br>
-Con el tiempo, el deportista olvida por qué empezó a practicar. El deporte se vuelve una lista de tareas.
-@@ -104,14 +106,12 @@
-<li>Clima Deportivo Tóxico: La falta de apoyo entre compañeros o un estilo de liderazgo autoritario por parte del entrenador que anula la autonomía del deportista.</li>
-<li>Falta de Apoyo Social: Sentir que el sacrificio deportivo te aleja de amigos, familia o estudios sin que haya una compensación emocional clara.</li>
-            <br>
- 2. Factores Psicológicos Internos<br>
-Es la batalla que ocurre dentro de la mente del atleta:
- 2. Factores Psicológicos Internos: Es la batalla que ocurre dentro de la mente del atleta:
-<li>Percepción de Incompetencia: El deportista siente que, por mucho que se esfuerce, no mejora. Esto destruye la autoeficacia.</li>
-<br>Metas Irrealistas: Establecer objetivos demasiado altos a corto plazo genera una frustración constante al no alcanzarlos.</li>
-<br>Pérdida de Autonomía: Sentir que no tienes voz ni voto en tu entrenamiento. El deportista se siente un "peón" y no el protagonista de su carrera.</li>
-<li>Metas Irrealistas: Establecer objetivos demasiado altos a corto plazo genera una frustración constante al no alcanzarlos.</li>
-<li>Pérdida de Autonomía: Sentir que no tienes voz ni voto en tu entrenamiento. El deportista se siente un "peón" y no el protagonista de su carrera.</li><br>
-            <br>
-  3. Factores Biológicos y del Rendimiento<br>
-El cuerpo también envía señales que la mente interpreta como desinterés:
-  3. Factores Biológicos y del Rendimiento: El cuerpo también envía señales que la mente interpreta como desinterés:
-           <li>Sobreentrenamiento (Overtraining): Un desequilibrio entre carga y recuperación. La fatiga física crónica produce una respuesta química en el cerebro que reduce la motivación y el placer (anhedonia)..</li>
+
+    <div class="container">
+        <h1 class="hero-title">Pérdida de Motivación Deportiva</h1>
+
+        <div class="glass-card">
+            <h2>Adversidades Externas</h2>
+            <p>La pérdida de motivación en el deporte por factores externos es un proceso donde el entorno asfixia la pasión del atleta. No es una debilidad propia, sino una respuesta al estrés del medio ambiente deportivo.</p>
         </div>
+
+        <div class="glass-card">
+            <h2>El Impacto en el Atleta</h2>
+            
+            <div class="info-block">
+                <strong>BURNOUT</strong>
+                <p>El burnout, o síndrome de desgaste profesional, es un estado de agotamiento físico, emocional y mental crónico provocado por el estrés excesivo y prolongado.</p>
+            </div>
+
+            <div class="info-block" style="border-left-color: var(--neon-cyan);">
+                <strong>BAJO RENDIMIENTO</strong>
+                <p>Un deportista desmotivado rinde menos, lo que afecta no solo su progreso individual sino también la dinámica de equipos.</p>
+            </div>
+
+            <div class="info-block">
+                <strong>ENTORNO Y PRESIÓN</strong>
+                <p>La presión excesiva de padres y entrenadores por ganar, ignorando el disfrute o saltándose etapas de formación, es una causa directa de frustración y abandono en jóvenes.</p>
+            </div>
+        </div>
+
+        <div class="accordion-box">
+            <button class="tab-trigger" onclick="toggleTab(this)">
+                CÓMO CANALIZAR LA DESMOTIVACIÓN <span>+</span>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <p style="margin-bottom: 20px;">Canalizar la desmotivación deportiva requiere un cambio de enfoque estratégico para proteger la salud mental del atleta:</p>
+                    <ul>
+                        <li><strong>Reajuste de Objetivos:</strong> Al cumplir pequeñas metas diarias (metas de proceso), el cerebro recupera la sensación de control y competencia.</li>
+                        <li><strong>Recuperación Activa:</strong> El burnout ocurre por saturación del sistema nervioso. Se deben aplicar periodos de "desconexión total" con actividades recreativas.</li>
+                        <li><strong>Comunicación Asertiva:</strong> Establecer conversaciones honestas con el entorno para reducir la presión externa y recuperar la autonomía sobre la propia carrera.</li>
+                        <li><strong>Reconexión con el Porqué:</strong> Usar la visualización positiva para recordar las razones iniciales por las que se ama el deporte, eliminando la sensación de "lista de tareas".</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>&copy; 2026 PROYECTO K • ATHLETIC MINDSET</footer>
     </div>
+
+    <script>
+        function toggleTab(btn) {
+            const panel = btn.nextElementSibling;
+            const span = btn.querySelector('span');
+            
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                span.textContent = "+";
+                btn.style.borderRadius = "15px";
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                span.textContent = "-";
+                btn.style.borderRadius = "15px 15px 0 0";
+            }
+        }
+    </script>
+</body>
+</html>
