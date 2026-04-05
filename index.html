@@ -1,87 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DESMOTIVACION EN DEPORTISTAS</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1c1c1c, #1a1a1a);
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        h2 {
-            font-size: 2em;
-            color: #00bfff;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-        }
-        .accordion {
-            background: #282828;
-            border: none;
-            border-radius: 5px;
-            margin: 10px 0;
-            transition: background 0.3s;
-        }
-        .accordion:hover {
-            background: #333;
-        }
-        .panel {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            background-color: #1a1a1a;
-        }
-        .active, .accordion:hover {
-            background-color: #444;
-        }
-        .content {
-            margin: 30px 0;
-            font-size: 1.1em;
-        }
-        .neon {
-            text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 20px #00bfff;
-        }
-    </style>
-    <script>
-        function toggleAccordion(element) {
-            element.classList.toggle("active");
-            var panel = element.nextElementSibling;
-            if (panel.style.maxHeight){
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        }
-    </script>
 </head>
 <body>
     <p class="neon texto-centrado">DESMOTIVACION EN DEPORTITAS</p>
+    <p class="neon texto-centrado" onclick="toggleAccordion(this)">¿QUE ES LA PSICOLOGIA DEPORTIVA?</p>
     <p class="neon texto-centrado" onclick="toggleAccordion(this)" style="cursor: pointer;">
     ¿QUÉ ES LA PSICOLOGÍA DEPORTIVA?
 </p>
     <div class="panel">
         <div class="content">
             es la disciplina que estudia los procesos cognitivos, emocionales y conductuales de las personas en el contexto del deporte y la actividad física. Su objetivo no es solo mejorar el rendimiento en la cancha, sino también garantizar el bienestar mental del atleta.
-Imagina que el deportista es un coche de carreras: si el motor (el cuerpo) es potente pero el piloto (la mente) no sabe gestionar las curvas o la presión de la competencia, el coche nunca llegará a su máximo potencial.
-        </div>
-    </div>
-    <p class="neon texto-centrado" onclick="toggleAccordion(this)">ESTRATEGIAS PARA SUPERAR LA PERDIDA DE MOTIVACION </p>
-    <div class="panel">
-        <div class="Lato">
-           <br> 1. Reajuste de Objetivos (Metas de Proceso)<br>
-El deportista desmotivado suele estar obsesionado con el resultado final (ganar, tiempos, trofeos). Si estos no llegan, aparece la frustración.<br>
-            <br>
-<li>La Estrategia: Olvida el marcador. Establece una meta técnica pequeña para cada entrenamiento. Por ejemplo: "Hoy me enfocaré únicamente en que mi respiración sea constante" o "Hoy mejoraré el ángulo de mi tiro".</li>
+@@ -80,15 +82,15 @@
 <li>El Beneficio: Al cumplir pequeñas metas diarias, el cerebro recupera la sensación de control y competencia.</li>
             <br>
            <br> 2. Recuperación Activa y Descanso Cognitivo<br>
+El burnout ocurre porque el sistema nervioso está saturado.<br> Seguir entrenando al mismo ritmo solo empeora el cuadro.<br>
 El burnout ocurre porque el sistema nervioso está saturado.Seguir entrenando al mismo ritmo solo empeora el cuadro.<br>
             <br>
 <li>La Estrategia: Aplica periodos de "desconexión total". Realiza actividades físicas que no tengan relación con tu deporte principal y que sean puramente recreativas (senderismo, natación suave, juegos de equipo sin marcador).</li>
@@ -90,30 +21,27 @@ El burnout ocurre porque el sistema nervioso está saturado.Seguir entrenando al
            <br> 3. Comunicación y Límites con el Entorno<br> Si la causa es la presión externa de padres o entrenadores, el silencio es el mayor enemigo.<br>
             <br>
 <li>La Estrategia: Establece una conversación honesta. Explica que la presión actual está afectando tu rendimiento. El deportista necesita sentir que tiene autonomía sobre su carrera, no que es un títere de las expectativas de otros.</li>
+<li>>El Beneficio: Aligera la carga emocional y reequilibra la dinámica de poder en la relación deportista-entrenador.</li>
 <li>El Beneficio: Aligera la carga emocional y reequilibra la dinámica de poder en la relación deportista-entrenador.</li>
             <br>
            <br> 4. Visualización Positiva (Reconexión con el "Porqué")<br>
 Con el tiempo, el deportista olvida por qué empezó a practicar. El deporte se vuelve una lista de tareas.
-La Estrategia: Dedica 5 minutos antes de dormir a visualizar momentos donde disfrutaste el deporte sin presiones. Recuerda la sensación de la primera vez que lograste algo difícil.
-El Beneficio: Ayuda a reconectar con la motivación intrínseca (el placer de la actividad por sí misma).
-        </div>
-    </div>
-    <p class="neon texto-centrado" onclick="toggleAccordion(this)">FACTORES QUE CONDUCEN LA PERDIDA DE INTERES</p>
-    <div class="panel">
-        <div class="content">
-            1. Factores Ambientales y del Entorno<br>
-<li>Presión Desmedida: Cuando el entorno (padres, entrenadores) prioriza el resultado sobre el aprendizaje. El deporte deja de ser un juego para convertirse en una obligación de "rendir cuentas".</li>
+@@ -104,14 +106,12 @@
 <li>Clima Deportivo Tóxico: La falta de apoyo entre compañeros o un estilo de liderazgo autoritario por parte del entrenador que anula la autonomía del deportista.</li>
 <li>Falta de Apoyo Social: Sentir que el sacrificio deportivo te aleja de amigos, familia o estudios sin que haya una compensación emocional clara.</li>
             <br>
+ 2. Factores Psicológicos Internos<br>
+Es la batalla que ocurre dentro de la mente del atleta:
  2. Factores Psicológicos Internos: Es la batalla que ocurre dentro de la mente del atleta:
 <li>Percepción de Incompetencia: El deportista siente que, por mucho que se esfuerce, no mejora. Esto destruye la autoeficacia.</li>
+<br>Metas Irrealistas: Establecer objetivos demasiado altos a corto plazo genera una frustración constante al no alcanzarlos.</li>
+<br>Pérdida de Autonomía: Sentir que no tienes voz ni voto en tu entrenamiento. El deportista se siente un "peón" y no el protagonista de su carrera.</li>
 <li>Metas Irrealistas: Establecer objetivos demasiado altos a corto plazo genera una frustración constante al no alcanzarlos.</li>
 <li>Pérdida de Autonomía: Sentir que no tienes voz ni voto en tu entrenamiento. El deportista se siente un "peón" y no el protagonista de su carrera.</li><br>
             <br>
+  3. Factores Biológicos y del Rendimiento<br>
+El cuerpo también envía señales que la mente interpreta como desinterés:
   3. Factores Biológicos y del Rendimiento: El cuerpo también envía señales que la mente interpreta como desinterés:
            <li>Sobreentrenamiento (Overtraining): Un desequilibrio entre carga y recuperación. La fatiga física crónica produce una respuesta química en el cerebro que reduce la motivación y el placer (anhedonia)..</li>
         </div>
     </div>
-</body>
-</html>
