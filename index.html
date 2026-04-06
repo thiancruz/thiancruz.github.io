@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K | Mental Performance Hub</title>
+    <title>K | La Odisea del Atleta</title>
     
     <link rel="icon" type="image/png" href="LOGO.jpeg">
-    
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
+        /* Mantengo tus estilos base de Neón y Cristal */
         :root {
             --bg-dark: #05070a;
             --neon-cyan: #00f2ff;
@@ -28,11 +28,11 @@
             overflow-x: hidden;
             position: relative;
             padding: 40px 20px;
-            line-height: 1.7;
+            line-height: 1.8;
             background-image: radial-gradient(circle at center, #0d1117 0%, #05070a 100%);
         }
 
-        /* FONDO ANIMADO DE AURORAS */
+        /* Fondo Animado */
         body::before, body::after {
             content: "";
             position: fixed;
@@ -57,17 +57,16 @@
             top: 25px;
             right: 25px;
             width: 45px;
-            height: auto;
             z-index: 1000;
             filter: drop-shadow(0 0 8px var(--neon-cyan));
         }
 
-        .container { max-width: 950px; margin: 0 auto; position: relative; z-index: 1; }
+        .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
 
         .hero-title {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            font-size: clamp(2rem, 8vw, 3.8rem);
+            font-size: clamp(2rem, 8vw, 4rem);
             text-align: center;
             background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 100%);
             -webkit-background-clip: text;
@@ -76,58 +75,42 @@
             text-transform: uppercase;
         }
 
-        /* --- NUEVA ESTRUCTURA DE COLUMNAS PARA IMAGEN AL LADO --- */
+        /* Estructura de Columnas */
         .content-layout {
             display: flex;
-            gap: 30px;
-            align-items: flex-start; /* Alinea al techo */
+            gap: 40px;
+            align-items: center;
         }
 
-        .content-text {
-            flex: 1; /* Ocupa el espacio restante */
-        }
+        .content-text { flex: 1; }
 
         .img-col {
-            width: 300px; /* Ancho fijo para la columna de imagen en PC */
-            flex-shrink: 0; /* No deja que se encoja */
+            width: 350px;
+            flex-shrink: 0;
         }
 
         .img-placeholder {
             width: 100%;
-            height: 250px; /* Altura para el placeholder */
+            height: 400px;
             background: rgba(255,255,255,0.02);
-            border: 2px dashed var(--glass-border);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--glass-border);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
         }
 
-        .img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .img-placeholder img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .img-placeholder:hover img { transform: scale(1.1); }
 
-        /* Adaptación para celulares (Imagen arriba del texto) */
-        @media (max-width: 768px) {
-            .content-layout {
-                flex-direction: column-reverse; /* Imagen arriba en móvil */
-                gap: 20px;
-            }
-            .img-col {
-                width: 100%; /* Ancho completo en móvil */
-            }
-        }
-        /* ----------------------------------------------------- */
-
-        /* RECUADROS NOVEDOSOS */
-        .accordion-box { margin-bottom: 20px; }
+        /* Acordeones */
+        .accordion-box { margin-bottom: 25px; }
 
         .tab-trigger {
             width: 100%;
             background: var(--glass);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            padding: 25px;
+            padding: 30px;
             border-radius: 20px;
             color: #fff;
             font-family: 'Syne', sans-serif;
@@ -138,48 +121,47 @@
             align-items: center;
             transition: 0.3s;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .tab-trigger:hover { border-color: var(--neon-purple); background: rgba(188, 19, 254, 0.05); }
+        .tab-trigger:hover { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
 
         .panel {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .panel-content { 
-            padding: 30px; 
-            color: #ced4da; 
+            padding: 40px; 
             background: rgba(255,255,255,0.01); 
             border-radius: 0 0 20px 20px; 
-            margin-top: -10px; 
+            margin-top: -10px;
+            border: 1px solid var(--glass-border);
+            border-top: none;
         }
+
+        /* Tipografía Narrativa */
+        .narrative-p { margin-bottom: 20px; color: #ced4da; font-size: 1.05rem; }
+        .highlight-cyan { color: var(--neon-cyan); font-weight: 600; }
+        .highlight-purple { color: var(--neon-purple); font-weight: 600; }
 
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
-            padding: 40px;
-            margin-top: 40px;
+            padding: 50px;
+            margin-top: 50px;
         }
 
-        h2 { font-family: 'Syne', sans-serif; color: var(--neon-cyan); margin-bottom: 20px; font-size: 1.5rem; }
+        footer { text-align: center; margin-top: 80px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 5px; }
 
-        .info-block { 
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.02);
-            border-left: 4px solid var(--neon-purple);
+        @media (max-width: 850px) {
+            .content-layout { flex-direction: column-reverse; }
+            .img-col { width: 100%; }
+            .img-placeholder { height: 250px; }
         }
-
-        ul { list-style: none; margin-top: 15px; }
-        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        li::before { content: "›"; position: absolute; left: 0; color: var(--neon-cyan); font-weight: bold; }
-
-        footer { text-align: center; margin-top: 60px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 4px; }
     </style>
 </head>
 <body>
@@ -187,18 +169,19 @@
     <img src="LOGO.jpeg" alt="S&S" class="logo-ss">
 
     <div class="container">
-        <h1 class="hero-title">Desmotivación Deportiva</h1>
+        <h1 class="hero-title">El Silencio del Campeón</h1>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">Presentación y Contexto <span>+</span></button>
+            <button class="tab-trigger" onclick="toggleTab(this)">I. El Ascenso y la Chispa <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
                     <div class="content-layout">
                         <div class="content-text">
-                            <p>En la actualidad, un montón de gente se lanza al deporte con mucha ilusión y energía inicial. Sin embargo, conforme pasa el tiempo, esa chispa se va apagando y terminan perdiendo el interés. Este cambio no solo genera frustración, sino que a menudo lleva al completo abandono del ejercicio, lo que afecta la salud mental. La desmotivación y el burnout ya no son exclusivos de la élite; afectan a cualquier persona que busca bienestar personal.</p>
+                            <p class="narrative-p">Todo comienza con un estallido de color. Al principio, el deporte es un lienzo en blanco lleno de promesas. En la actualidad, miles de personas inician su viaje con una <span class="highlight-cyan">ilusión eléctrica</span>, alimentada por la dopamina de los primeros logros. Es esa energía inicial la que nos hace creer que somos invencibles.</p>
+                            <p class="narrative-p">Sin embargo, la narrativa cambia sutilmente. Con el paso de los meses, la chispa empieza a parpadear. Lo que antes era un refugio se convierte en una obligación. Este fenómeno no distingue entre aficionados y profesionales; es una sombra que acecha a cualquiera que busque bienestar físico. Cuando el interés se desvanece, la frustración ocupa su lugar, transformando el movimiento en una carga pesada que termina, trágicamente, en el <span class="highlight-purple">abandono total</span>.</p>
                         </div>
                         <div class="img-col">
-                            <div class="img-placeholder"><img src="PRINCIPAL.jpg" alt="Contexto"></div>
+                            <div class="img-placeholder"><img src="IMAGEN_ATLETA_INICIO.jpg" alt="Energía inicial"></div>
                         </div>
                     </div>
                 </div>
@@ -206,21 +189,21 @@
         </div>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">Cómo Canalizar la Desmotivación <span>+</span></button>
+            <button class="tab-trigger" onclick="toggleTab(this)">II. Navegando el Vacío <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
                     <div class="content-layout">
                         <div class="content-text">
-                            <p>Canalizar la desmotivación requiere un cambio de enfoque estratégico para proteger la salud mental del atleta:</p>
-                            <ul>
-                                <li><strong>Reajuste de Objetivos:</strong> Al cumplir pequeñas metas diarias, el cerebro recupera la sensación de control.</li>
-                                <li><strong>Recuperación Activa:</strong> El burnout ocurre por saturación; se necesitan periodos de desconexión total.</li>
-                                <li><strong>Comunicación Asertiva:</strong> Reducir la presión externa y recuperar la autonomía.</li>
-                                <li><strong>Reconexión con el Porqué:</strong> Usar la visualización para recordar por qué amas lo que haces.</li>
+                            <p class="narrative-p">Cuando el vacío llega, el deportista se encuentra en una encrucijada mental. Canalizar este estado no es cuestión de "echarle ganas", sino de <span class="highlight-cyan">reprogramar la brújula interna</span>. Es aquí donde la psicología deportiva entra como un faro.</p>
+                            <p class="narrative-p">La estrategia para rescatar la salud mental se basa en pilares fundamentales:</p>
+                            <ul style="list-style: none; margin-left: 10px;">
+                                <li style="margin-bottom: 10px;">⚡ <strong>Micro-Victorias:</strong> Reajustar objetivos a metas diarias casi invisibles para engañar al cerebro y devolverle el control.</li>
+                                <li style="margin-bottom: 10px;">🌑 <strong>Desconexión Radical:</strong> Entender que el burnout es una saturación del sistema; a veces, el mayor acto de rendimiento es no hacer nada.</li>
+                                <li style="margin-bottom: 10px;">🗣️ <strong>Voz Propia:</strong> Recuperar la autonomía frente a las presiones externas mediante una comunicación honesta.</li>
                             </ul>
                         </div>
                         <div class="img-col">
-                            <div class="img-placeholder"><img src="DESMOTIVACION.jpg" alt="Canalizar"></div>
+                            <div class="img-placeholder"><img src="IMAGEN_ESTRATEGIA.jpg" alt="Estrategia mental"></div>
                         </div>
                     </div>
                 </div>
@@ -228,15 +211,16 @@
         </div>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">Conclusión y Reflexión <span>+</span></button>
+            <button class="tab-trigger" onclick="toggleTab(this)">III. La Resurrección del Hábito <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
                     <div class="content-layout">
                         <div class="content-text">
-                            <p>La desmotivación no es simple falta de disciplina; es un fenómeno complejo de factores físicos y emocionales. Es fundamental aprender a escuchar las señales de nuestro cuerpo y encontrar un punto medio entre entrenamiento y descanso. El verdadero reto es descubrir el equilibrio que nos permita disfrutar del movimiento y convertirlo en un hábito duradero.</p>
+                            <p class="narrative-p">La reflexión final nos lleva a una verdad incómoda: la desmotivación no es falta de carácter, es una <span class="highlight-purple">conversación entre el cuerpo y la mente</span>. No se trata de entrenar a toda costa, sino de aprender a escuchar el lenguaje del cansancio.</p>
+                            <p class="narrative-p">El verdadero éxito no es una medalla, sino encontrar ese punto medio sagrado entre la exigencia y el placer. Cuando logramos convertir la actividad física en un hábito duradero que respira con nosotros, hemos ganado la batalla más importante: la de nuestra propia longevidad emocional.</p>
                         </div>
                         <div class="img-col">
-                            <div class="img-placeholder"><img src="REFLEXION.jpg" alt="Reflexión"></div>
+                            <div class="img-placeholder"><img src="IMAGEN_EQUILIBRIO.jpg" alt="Equilibrio final"></div>
                         </div>
                     </div>
                 </div>
@@ -244,21 +228,22 @@
         </div>
 
         <div class="glass-card">
-            <h2>Adversidades Externas e Impacto</h2>
-            <p>Cuando el entorno asfixia la pasión, no es una debilidad propia, sino una respuesta al estrés del medio ambiente deportivo.</p>
+            <h2 style="font-family: 'Syne'; text-transform: uppercase; margin-bottom: 30px;">Anatomía de la Adversidad</h2>
+            <p class="narrative-p">A veces, el enemigo no está dentro, sino alrededor. El entorno puede asfixiar la pasión hasta dejarla sin aire.</p>
             
-            <div class="info-block">
-                <strong>BURNOUT</strong>
-                <p>Estado de agotamiento emocional y mental crónico. Es el desgaste profesional llevado al campo de juego.</p>
-            </div>
-
-            <div class="info-block" style="border-left-color: var(--neon-cyan);">
-                <strong>ENTORNO Y PRESIÓN</strong>
-                <p>La presión excesiva de padres y entrenadores por ganar, ignorando el disfrute, es la causa principal de abandono en jóvenes.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <div style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border-left: 4px solid var(--neon-purple);">
+                    <strong style="color: var(--neon-purple); display: block; margin-bottom: 10px; font-family: 'Syne';">EL MURO DEL BURNOUT</strong>
+                    <p style="font-size: 0.9rem; color: #a0a0a0;">Un desgaste que no solo agota los músculos, sino que apaga el alma. Es el agotamiento emocional crónico del sistema nervioso.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border-left: 4px solid var(--neon-cyan);">
+                    <strong style="color: var(--neon-cyan); display: block; margin-bottom: 10px; font-family: 'Syne';">LA JAULA DE LA PRESIÓN</strong>
+                    <p style="font-size: 0.9rem; color: #a0a0a0;">Padres, entrenadores y la cultura de "ganar o morir". La presión externa es el veneno más rápido para el abandono deportivo temprano.</p>
+                </div>
             </div>
         </div>
 
-        <footer>&copy; PROYECTO ELABORADO POR S&S</footer>
+        <footer>PROYECTO NARRATIVO ELABORADO POR S&S</footer>
     </div>
 
     <script>
