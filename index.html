@@ -3,259 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K | La Odisea del Atleta</title>
+    <title>K | High Performance Hub</title>
     
     <link rel="icon" type="image/png" href="LOGO.jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Mantengo tus estilos base de Neón y Cristal */
         :root {
-            --bg-dark: #05070a;
+            --bg-dark: #020408;
             --neon-cyan: #00f2ff;
             --neon-purple: #bc13fe;
             --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        /* Barra de progreso de lectura */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 4px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            width: 0%; z-index: 2000; transition: width 0.1s;
+        }
 
         body {
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
-            padding: 40px 20px;
             line-height: 1.8;
-            background-image: radial-gradient(circle at center, #0d1117 0%, #05070a 100%);
         }
 
-        /* Fondo Animado */
-        body::before, body::after {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(140px);
-            opacity: 0.12;
-            animation: moveLights 25s infinite alternate ease-in-out;
+        /* Fondo Animado de Auroras */
+        .aurora {
+            position: fixed; width: 800px; height: 800px; border-radius: 50%;
+            z-index: -1; filter: blur(160px); opacity: 0.1;
+            animation: move 20s infinite alternate linear;
         }
-        body::before { top: -15%; right: -10%; background: var(--neon-cyan); }
-        body::after { bottom: -15%; left: -10%; background: var(--neon-purple); animation-delay: -12s; }
+        .aurora-1 { top: -20%; left: -10%; background: var(--neon-cyan); }
+        .aurora-2 { bottom: -20%; right: -10%; background: var(--neon-purple); animation-delay: -5s; }
 
-        @keyframes moveLights {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-150px, 150px) scale(1.4); }
+        @keyframes move {
+            from { transform: rotate(0deg) translate(50px) rotate(0deg); }
+            to { transform: rotate(360deg) translate(50px) rotate(-360deg); }
         }
 
-        .logo-ss {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            width: 45px;
-            z-index: 1000;
-            filter: drop-shadow(0 0 8px var(--neon-cyan));
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
 
-        .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
-
+        /* HERO SECTION */
+        .hero { text-align: center; margin-bottom: 100px; }
         .hero-title {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 8vw, 4rem);
-            text-align: center;
-            background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 60px;
-            text-transform: uppercase;
+            font-family: 'Syne', sans-serif; font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9; text-transform: uppercase; font-weight: 800;
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.1));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Estructura de Columnas */
-        .content-layout {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+        /* TARJETAS DINÁMICAS (ACORDEONES) */
+        .dynamic-section { margin-bottom: 40px; }
+        
+        .card-trigger {
+            width: 100%; background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 40px; border-radius: 30px; color: #fff; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
         }
 
-        .content-text { flex: 1; }
-
-        .img-col {
-            width: 350px;
-            flex-shrink: 0;
+        .card-trigger:hover {
+            transform: translateY(-5px); border-color: var(--neon-cyan);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
         }
 
-        .img-placeholder {
-            width: 100%;
-            height: 400px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
-        }
-
-        .img-placeholder img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .img-placeholder:hover img { transform: scale(1.1); }
-
-        /* Acordeones */
-        .accordion-box { margin-bottom: 25px; }
-
-        .tab-trigger {
-            width: 100%;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: 20px;
-            color: #fff;
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .tab-trigger:hover { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
-
+        .card-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-align: left; }
+        
         .panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.8s ease-in-out;
         }
 
         .panel-content { 
-            padding: 40px; 
-            background: rgba(255,255,255,0.01); 
-            border-radius: 0 0 20px 20px; 
-            margin-top: -10px;
-            border: 1px solid var(--glass-border);
-            border-top: none;
+            padding: 50px; background: rgba(255,255,255,0.01);
+            border-radius: 0 0 30px 30px; border: 1px solid var(--glass-border); border-top: none;
         }
 
-        /* Tipografía Narrativa */
-        .narrative-p { margin-bottom: 20px; color: #ced4da; font-size: 1.05rem; }
-        .highlight-cyan { color: var(--neon-cyan); font-weight: 600; }
-        .highlight-purple { color: var(--neon-purple); font-weight: 600; }
+        /* LAYOUT DE CONTENIDO EXTENSO */
+        .info-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start; }
+        
+        .text-block p { margin-bottom: 25px; color: #a0a0a0; font-size: 1.1rem; }
+        .highlight { color: var(--neon-cyan); font-weight: 600; border-bottom: 1px solid var(--neon-cyan); }
 
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 50px;
+        .image-box {
+            position: sticky; top: 100px; width: 100%; height: 450px;
+            border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border);
+        }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: grayscale(30%); }
+        .image-box:hover img { transform: scale(1.1); filter: grayscale(0%); }
+
+        /* BLOQUES DE DATOS TÉCNICOS */
+        .data-chip {
+            background: rgba(188, 19, 254, 0.1); border-left: 4px solid var(--neon-purple);
+            padding: 20px; margin: 20px 0; border-radius: 0 15px 15px 0;
+        }
+
+        /* SECCIÓN FINAL (BURNOUT) */
+        .burnout-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
             margin-top: 50px;
         }
 
-        footer { text-align: center; margin-top: 80px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 5px; }
+        .b-card {
+            background: var(--glass); padding: 40px; border-radius: 30px;
+            border: 1px solid var(--glass-border); position: relative; overflow: hidden;
+        }
+        .b-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--neon-purple);
+        }
 
-        @media (max-width: 850px) {
-            .content-layout { flex-direction: column-reverse; }
-            .img-col { width: 100%; }
-            .img-placeholder { height: 250px; }
+        footer { text-align: center; padding: 50px; opacity: 0.2; letter-spacing: 10px; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .image-box { position: relative; top: 0; height: 300px; margin-top: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <img src="LOGO.jpeg" alt="S&S" class="logo-ss">
+    <div id="progress-bar"></div>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
 
     <div class="container">
-        <h1 class="hero-title">El Silencio del Campeón</h1>
+        
+        <header class="hero">
+            <h1 class="hero-title">Proyecto K:<br>Mentality</h1>
+            <p style="margin-top: 20px; color: var(--neon-cyan); letter-spacing: 5px;">CIENCIA Y RENDIMIENTO</p>
+        </header>
 
-        <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">I. El Ascenso y la Chispa <span>+</span></button>
+        <div class="dynamic-section">
+            <button class="card-trigger" onclick="toggle(this)">
+                <span class="card-title">01. La Anatomía del Abandono</span>
+                <span>+</span>
+            </button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="content-layout">
-                        <div class="content-text">
-                            <p class="narrative-p">Todo comienza con un estallido de color. Al principio, el deporte es un lienzo en blanco lleno de promesas. En la actualidad, miles de personas inician su viaje con una <span class="highlight-cyan">ilusión eléctrica</span>, alimentada por la dopamina de los primeros logros. Es esa energía inicial la que nos hace creer que somos invencibles.</p>
-                            <p class="narrative-p">Sin embargo, la narrativa cambia sutilmente. Con el paso de los meses, la chispa empieza a parpadear. Lo que antes era un refugio se convierte en una obligación. Este fenómeno no distingue entre aficionados y profesionales; es una sombra que acecha a cualquiera que busque bienestar físico. Cuando el interés se desvanece, la frustración ocupa su lugar, transformando el movimiento en una carga pesada que termina, trágicamente, en el <span class="highlight-purple">abandono total</span>.</p>
+                    <div class="info-grid">
+                        <div class="text-block">
+                            <p>La desmotivación no ocurre de la noche a la mañana; es un proceso erosivo. Al inicio, el cerebro está inundado de <span class="highlight">dopamina fásica</span>. Cada entrenamiento es una novedad, cada pequeño progreso se siente como una victoria olímpica.</p>
+                            <p>Sin embargo, cuando la novedad desaparece y entramos en la "meseta del rendimiento", el cerebro deja de recibir esas recompensas químicas fáciles. Es aquí donde la <span class="highlight">motivación intrínseca</span> debe tomar el mando. Si el deportista solo se mueve por resultados externos (medallas, likes, aprobación), el sistema colapsa.</p>
+                            <div class="data-chip">
+                                <strong>DATO TÉCNICO:</strong> Según la Teoría de la Autodeterminación (Deci & Ryan), la falta de <em>autonomía</em> es la causa #1 de desmotivación en atletas juveniles.
+                            </div>
+                            <p>Este cambio genera una frustración silenciosa. El deportista empieza a ver el gimnasio o la pista no como un santuario, sino como una oficina de tareas pendientes. El abandono es solo el síntoma final de una salud mental que ha sido ignorada durante meses.</p>
                         </div>
-                        <div class="img-col">
-                            <div class="img-placeholder"><img src="IMAGEN_ATLETA_INICIO.jpg" alt="Energía inicial"></div>
+                        <div class="image-box">
+                            <img src="IMAGEN_PSICOLOGIA.jpg" alt="Psicología">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">II. Navegando el Vacío <span>+</span></button>
+        <div class="dynamic-section">
+            <button class="card-trigger" onclick="toggle(this)">
+                <span class="card-title">02. El Protocolo de Canalización</span>
+                <span>+</span>
+            </button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="content-layout">
-                        <div class="content-text">
-                            <p class="narrative-p">Cuando el vacío llega, el deportista se encuentra en una encrucijada mental. Canalizar este estado no es cuestión de "echarle ganas", sino de <span class="highlight-cyan">reprogramar la brújula interna</span>. Es aquí donde la psicología deportiva entra como un faro.</p>
-                            <p class="narrative-p">La estrategia para rescatar la salud mental se basa en pilares fundamentales:</p>
-                            <ul style="list-style: none; margin-left: 10px;">
-                                <li style="margin-bottom: 10px;">⚡ <strong>Micro-Victorias:</strong> Reajustar objetivos a metas diarias casi invisibles para engañar al cerebro y devolverle el control.</li>
-                                <li style="margin-bottom: 10px;">🌑 <strong>Desconexión Radical:</strong> Entender que el burnout es una saturación del sistema; a veces, el mayor acto de rendimiento es no hacer nada.</li>
-                                <li style="margin-bottom: 10px;">🗣️ <strong>Voz Propia:</strong> Recuperar la autonomía frente a las presiones externas mediante una comunicación honesta.</li>
+                    <div class="info-grid">
+                        <div class="text-block">
+                            <p>Para revertir la desmotivación, el enfoque debe ser quirúrgico. No se trata de "motivarse", se trata de <span class="highlight">re-estructurar la carga cognitiva</span>.</p>
+                            <p>Implementamos cuatro pilares de choque:</p>
+                            <ul>
+                                <li style="margin-bottom: 20px;">
+                                    <strong style="color:var(--neon-cyan)">RESETEO DE DOPAMINA:</strong> Periodos de 72 horas de desconexión total. Sin redes sociales, sin métricas, sin relojes deportivos. Devolver el cerebro a su estado base.
+                                </li>
+                                <li style="margin-bottom: 20px;">
+                                    <strong style="color:var(--neon-cyan)">METAS DE PROCESO:</strong> Ignorar el "qué" (ganar) y enfocarse en el "cómo" (la técnica del pie, la respiración). El control devuelve la calma.
+                                </li>
+                                <li style="margin-bottom: 20px;">
+                                    <strong style="color:var(--neon-cyan)">VISUALIZACIÓN POSITIVA:</strong> No visualizar la meta, sino el disfrute del esfuerzo. Entrenar la mente para encontrar placer en la incomodidad.
+                                </li>
                             </ul>
+                            <p>Al recuperar la <span class="highlight">autonomía</span> sobre la propia carrera, el deportista deja de ser un pasajero del estrés y se convierte en el arquitecto de su rendimiento.</p>
                         </div>
-                        <div class="img-col">
-                            <div class="img-placeholder"><img src="IMAGEN_ESTRATEGIA.jpg" alt="Estrategia mental"></div>
+                        <div class="image-box">
+                            <img src="IMAGEN_ENTRENAMIENTO.jpg" alt="Entrenamiento">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">III. La Resurrección del Hábito <span>+</span></button>
+        <div class="dynamic-section">
+            <button class="card-trigger" onclick="toggle(this)">
+                <span class="card-title">03. La Filosofía del Hábito</span>
+                <span>+</span>
+            </button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="content-layout">
-                        <div class="content-text">
-                            <p class="narrative-p">La reflexión final nos lleva a una verdad incómoda: la desmotivación no es falta de carácter, es una <span class="highlight-purple">conversación entre el cuerpo y la mente</span>. No se trata de entrenar a toda costa, sino de aprender a escuchar el lenguaje del cansancio.</p>
-                            <p class="narrative-p">El verdadero éxito no es una medalla, sino encontrar ese punto medio sagrado entre la exigencia y el placer. Cuando logramos convertir la actividad física en un hábito duradero que respira con nosotros, hemos ganado la batalla más importante: la de nuestra propia longevidad emocional.</p>
+                    <div class="info-grid">
+                        <div class="text-block">
+                            <p>El verdadero reto de la longevidad deportiva es entender que <span class="highlight">el descanso es parte del entrenamiento</span>, no su interrupción. La desmotivación suele ser el grito de auxilio de un sistema nervioso central sobrecargado.</p>
+                            <p>Buscamos el "Flow State" o Estado de Flujo: ese punto exacto donde el desafío es lo suficientemente difícil para mantenernos interesados, pero no tanto como para rompernos. Encontrar este equilibrio es lo que separa a los atletas que duran décadas de los que se queman en un par de años.</p>
+                            <p>Al final del día, el deporte debe ser una herramienta de expresión personal, un hábito positivo que acompañe nuestra vida de forma duradera y saludable.</p>
                         </div>
-                        <div class="img-col">
-                            <div class="img-placeholder"><img src="IMAGEN_EQUILIBRIO.jpg" alt="Equilibrio final"></div>
+                        <div class="image-box">
+                            <img src="IMAGEN_EQUILIBRIO.jpg" alt="Paz Mental">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card">
-            <h2 style="font-family: 'Syne'; text-transform: uppercase; margin-bottom: 30px;">Anatomía de la Adversidad</h2>
-            <p class="narrative-p">A veces, el enemigo no está dentro, sino alrededor. El entorno puede asfixiar la pasión hasta dejarla sin aire.</p>
+        <section class="glass-card">
+            <h2 style="font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 10px;">Factores Críticos</h2>
+            <p style="color: #a0a0a0; margin-bottom: 40px;">Entendiendo las causas externas que asfixian el rendimiento.</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
-                <div style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border-left: 4px solid var(--neon-purple);">
-                    <strong style="color: var(--neon-purple); display: block; margin-bottom: 10px; font-family: 'Syne';">EL MURO DEL BURNOUT</strong>
-                    <p style="font-size: 0.9rem; color: #a0a0a0;">Un desgaste que no solo agota los músculos, sino que apaga el alma. Es el agotamiento emocional crónico del sistema nervioso.</p>
+            <div class="burnout-grid">
+                <div class="b-card">
+                    <h3 style="color: var(--neon-purple); margin-bottom: 15px;">SÍNDROME DE BURNOUT</h3>
+                    <p>No es cansancio común. Es un estado clínico de agotamiento emocional donde el deportista siente una <span class="highlight">despersonalización</span> del éxito. Ya nada importa.</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border-left: 4px solid var(--neon-cyan);">
-                    <strong style="color: var(--neon-cyan); display: block; margin-bottom: 10px; font-family: 'Syne';">LA JAULA DE LA PRESIÓN</strong>
-                    <p style="font-size: 0.9rem; color: #a0a0a0;">Padres, entrenadores y la cultura de "ganar o morir". La presión externa es el veneno más rápido para el abandono deportivo temprano.</p>
+                <div class="b-card" style="border-top: 4px solid var(--neon-cyan);">
+                    <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">PRESIÓN DE ENTORNO</h3>
+                    <p>La sombra de entrenadores y padres. Cuando la motivación pasa de ser <em>intrínseca</em> (placer) a <em>extínseca</em> (miedo al fallo), el abandono es inminente.</p>
+                </div>
+                <div class="b-card">
+                    <h3 style="color: #fff; margin-bottom: 15px;">MESETA DE RENDIMIENTO</h3>
+                    <p>El momento donde el progreso se estanca. Sin una mentalidad de proceso, este periodo se convierte en la tumba de la motivación.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <footer>PROYECTO NARRATIVO ELABORADO POR S&S</footer>
+        <footer>&copy; PROYECTO ELABORADO POR S&S | 2026</footer>
     </div>
 
     <script>
-        function toggleTab(btn) {
+        // Barra de progreso
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+
+        // Acordeón dinámico
+        function toggle(btn) {
             const panel = btn.nextElementSibling;
-            const span = btn.querySelector('span');
+            const span = btn.querySelector('span:last-child');
+            
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
                 span.textContent = "+";
+                btn.style.borderRadius = "30px";
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 span.textContent = "-";
+                btn.style.borderRadius = "30px 30px 0 0";
             }
         }
     </script>
