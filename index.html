@@ -60,18 +60,15 @@
             height: auto;
             z-index: 1000;
             filter: drop-shadow(0 0 8px var(--neon-cyan));
-            transition: 0.4s;
         }
 
-        .container { max-width: 850px; margin: 0 auto; position: relative; z-index: 1; }
+        .container { max-width: 950px; margin: 0 auto; position: relative; z-index: 1; }
 
-        /* TÍTULO ORGÁNICO */
         .hero-title {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2rem, 8vw, 3.8rem);
             text-align: center;
-            line-height: 1.1;
             background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -79,27 +76,51 @@
             text-transform: uppercase;
         }
 
-        /* CONTENEDOR DE IMÁGENES */
-        .img-container {
+        /* --- NUEVA ESTRUCTURA DE COLUMNAS PARA IMAGEN AL LADO --- */
+        .content-layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start; /* Alinea al techo */
+        }
+
+        .content-text {
+            flex: 1; /* Ocupa el espacio restante */
+        }
+
+        .img-col {
+            width: 300px; /* Ancho fijo para la columna de imagen en PC */
+            flex-shrink: 0; /* No deja que se encoja */
+        }
+
+        .img-placeholder {
             width: 100%;
-            border-radius: 30px;
+            height: 250px; /* Altura para el placeholder */
+            background: rgba(255,255,255,0.02);
+            border: 2px dashed var(--glass-border);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--glass-border);
             overflow: hidden;
-            margin-bottom: 25px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .img-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
+        .img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Adaptación para celulares (Imagen arriba del texto) */
+        @media (max-width: 768px) {
+            .content-layout {
+                flex-direction: column-reverse; /* Imagen arriba en móvil */
+                gap: 20px;
+            }
+            .img-col {
+                width: 100%; /* Ancho completo en móvil */
+            }
         }
+        /* ----------------------------------------------------- */
 
-        .img-container:hover img { transform: scale(1.05); }
-
-        /* RECUADROS NOVEDOSOS (TABS/ACORDEONES) */
-        .accordion-box { margin-bottom: 25px; }
+        /* RECUADROS NOVEDOSOS */
+        .accordion-box { margin-bottom: 20px; }
 
         .tab-trigger {
             width: 100%;
@@ -111,61 +132,54 @@
             color: #fff;
             font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .tab-trigger:hover {
-            border-color: var(--neon-purple);
-            background: rgba(188, 19, 254, 0.05);
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
-        }
+        .tab-trigger:hover { border-color: var(--neon-purple); background: rgba(188, 19, 254, 0.05); }
 
         .panel {
             max-height: 0;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(255,255,255,0.01);
-            margin: 0 10px;
-            border-radius: 0 0 20px 20px;
         }
 
-        .panel-content { padding: 30px; color: #ced4da; font-size: 1rem; }
+        .panel-content { 
+            padding: 30px; 
+            color: #ced4da; 
+            background: rgba(255,255,255,0.01); 
+            border-radius: 0 0 20px 20px; 
+            margin-top: -10px; 
+        }
 
-        /* CARDS FIJAS */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 40px;
-            margin-top: 50px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            margin-top: 40px;
         }
 
-        h2 { font-family: 'Syne', sans-serif; color: var(--neon-cyan); margin-bottom: 20px; font-size: 1.6rem; }
+        h2 { font-family: 'Syne', sans-serif; color: var(--neon-cyan); margin-bottom: 20px; font-size: 1.5rem; }
 
         .info-block { 
-            margin-top: 30px;
+            margin-top: 25px;
             padding: 20px;
             border-radius: 15px;
             background: rgba(255,255,255,0.02);
             border-left: 4px solid var(--neon-purple);
         }
 
-        footer { text-align: center; margin-top: 80px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 5px; }
+        ul { list-style: none; margin-top: 15px; }
+        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        li::before { content: "›"; position: absolute; left: 0; color: var(--neon-cyan); font-weight: bold; }
 
-        span.icon { 
-            font-size: 1.5rem; 
-            color: var(--neon-purple); 
-            transition: 0.3s;
-        }
+        footer { text-align: center; margin-top: 60px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 4px; }
     </style>
 </head>
 <body>
@@ -173,59 +187,74 @@
     <img src="LOGO.jpeg" alt="S&S" class="logo-ss">
 
     <div class="container">
-        <h1 class="hero-title">Rendimiento Mental Deportivo</h1>
+        <h1 class="hero-title">Motivación Deportiva</h1>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">
-                Presentación y Contexto <span class="icon">+</span>
-            </button>
+            <button class="tab-trigger" onclick="toggleTab(this)">Presentación y Contexto <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="img-container">
-                        <img src="TU_IMAGEN_1.jpg" alt="Contexto Deportivo">
+                    <div class="content-layout">
+                        <div class="content-text">
+                            <p>En la actualidad, un montón de gente se lanza al deporte con mucha ilusión y energía inicial. Sin embargo, conforme pasa el tiempo, esa chispa se va apagando y terminan perdiendo el interés. Este cambio no solo genera frustración, sino que a menudo lleva al completo abandono del ejercicio, lo que afecta la salud mental. La desmotivación y el burnout ya no son exclusivos de la élite; afectan a cualquier persona que busca bienestar personal.</p>
+                        </div>
+                        <div class="img-col">
+                            <div class="img-placeholder"><img src="PRINCIPAL.jpg" alt="Contexto"></div>
+                        </div>
                     </div>
-                    <p>La desmotivación en el deporte no es simplemente una falta de disciplina. Es un fenómeno complejo que involucra múltiples factores físicos y emocionales que interactúan entre sí.</p>
                 </div>
             </div>
         </div>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">
-                Canalizar la Desmotivación <span class="icon">+</span>
-            </button>
+            <button class="tab-trigger" onclick="toggleTab(this)">Cómo Canalizar la Desmotivación <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="img-container">
-                        <img src="TU_IMAGEN_2.jpg" alt="Estrategias Mental">
+                    <div class="content-layout">
+                        <div class="content-text">
+                            <p>Canalizar la desmotivación requiere un cambio de enfoque estratégico para proteger la salud mental del atleta:</p>
+                            <ul>
+                                <li><strong>Reajuste de Objetivos:</strong> Al cumplir pequeñas metas diarias, el cerebro recupera la sensación de control.</li>
+                                <li><strong>Recuperación Activa:</strong> El burnout ocurre por saturación; se necesitan periodos de desconexión total.</li>
+                                <li><strong>Comunicación Asertiva:</strong> Reducir la presión externa y recuperar la autonomía.</li>
+                                <li><strong>Reconexión con el Porqué:</strong> Usar la visualización para recordar por qué amas lo que haces.</li>
+                            </ul>
+                        </div>
+                        <div class="img-col">
+                            <div class="img-placeholder"><img src="DESMOTIVACION.jpg" alt="Canalizar"></div>
+                        </div>
                     </div>
-                    <p>Reajuste de objetivos y comunicación asertiva son las claves para proteger la salud mental del atleta y recuperar la autonomía sobre su carrera.</p>
                 </div>
             </div>
         </div>
 
         <div class="accordion-box">
-            <button class="tab-trigger" onclick="toggleTab(this)">
-                Conclusión y Reflexión <span class="icon">+</span>
-            </button>
+            <button class="tab-trigger" onclick="toggleTab(this)">Conclusión y Reflexión <span>+</span></button>
             <div class="panel">
                 <div class="panel-content">
-                    <div class="img-container">
-                        <img src="TU_IMAGEN_3.jpg" alt="Equilibrio">
+                    <div class="content-layout">
+                        <div class="content-text">
+                            <p>La desmotivación no es simple falta de disciplina; es un fenómeno complejo de factores físicos y emocionales. Es fundamental aprender a escuchar las señales de nuestro cuerpo y encontrar un punto medio entre entrenamiento y descanso. El verdadero reto es descubrir el equilibrio que nos permita disfrutar del movimiento y convertirlo en un hábito duradero.</p>
+                        </div>
+                        <div class="img-col">
+                            <div class="img-placeholder"><img src="REFLEXION.jpg" alt="Reflexión"></div>
+                        </div>
                     </div>
-                    <p>El verdadero reto no es obligarnos a entrenar a toda costa, sino descubrir el equilibrio que nos permita disfrutar del movimiento de forma duradera.</p>
                 </div>
             </div>
         </div>
 
         <div class="glass-card">
-            <h2>Impacto en el Atleta</h2>
+            <h2>Adversidades Externas e Impacto</h2>
+            <p>Cuando el entorno asfixia la pasión, no es una debilidad propia, sino una respuesta al estrés del medio ambiente deportivo.</p>
+            
             <div class="info-block">
-                <strong style="color:var(--neon-purple)">SÍNDROME DE BURNOUT</strong>
-                <p>Agotamiento físico y mental crónico que apaga la pasión competitiva.</p>
+                <strong>BURNOUT</strong>
+                <p>Estado de agotamiento emocional y mental crónico. Es el desgaste profesional llevado al campo de juego.</p>
             </div>
-            <div class="info-block" style="border-left-color: var(--neon-cyan)">
-                <strong style="color:var(--neon-cyan)">PRESIÓN EXTERNA</strong>
-                <p>Cuando el entorno asfixia el disfrute, el abandono se vuelve la única salida percibida.</p>
+
+            <div class="info-block" style="border-left-color: var(--neon-cyan);">
+                <strong>ENTORNO Y PRESIÓN</strong>
+                <p>La presión excesiva de padres y entrenadores por ganar, ignorando el disfrute, es la causa principal de abandono en jóvenes.</p>
             </div>
         </div>
 
@@ -235,16 +264,13 @@
     <script>
         function toggleTab(btn) {
             const panel = btn.nextElementSibling;
-            const icon = btn.querySelector('.icon');
-            
+            const span = btn.querySelector('span');
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
-                icon.textContent = "+";
-                icon.style.transform = "rotate(0deg)";
+                span.textContent = "+";
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
-                icon.textContent = "−";
-                icon.style.transform = "rotate(180deg)";
+                span.textContent = "-";
             }
         }
     </script>
