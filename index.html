@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K | El Peso Invisible</title>
+    <title>K | El Peso Invisible del Rendimiento</title>
     
     <link rel="icon" type="image/png" href="LOGO.jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -27,163 +27,112 @@
             line-height: 1.6;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 100px 20px; }
+        .container { max-width: 950px; margin: 0 auto; padding: 80px 20px; }
 
         .hero { text-align: center; margin-bottom: 80px; }
         .hero h1 { 
             font-family: 'Syne', sans-serif; 
             font-size: clamp(2.5rem, 8vw, 4.5rem); 
             text-transform: uppercase;
-            line-height: 0.9;
-            background: linear-gradient(to bottom, #fff, var(--border));
+            line-height: 1;
+            background: linear-gradient(to bottom, #fff, #444);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* TARJETAS DE PORTADA MODERNAS */
-        .chapter-wrapper {
-            margin-bottom: 40px;
-            perspective: 1000px;
-        }
+        /* TARJETAS DE CAPÍTULO */
+        .chapter-wrapper { margin-bottom: 35px; }
 
         .chapter-card {
             background: var(--glass);
             border: 1px solid var(--border);
-            border-radius: 32px;
+            border-radius: 30px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             cursor: pointer;
             position: relative;
         }
 
         .chapter-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.08);
         }
 
-        /* IMAGEN DE PORTADA */
-        .cover-img {
+        /* PORTADA CERRADA */
+        .cover-section {
             width: 100%;
-            height: 280px; /* Altura de la portada cerrada */
+            height: 250px;
             position: relative;
             overflow: hidden;
-            transition: height 0.5s ease;
         }
 
-        .cover-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6) grayscale(20%);
-            transition: transform 0.8s ease;
+        .cover-section img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.5);
+            transition: 0.8s ease;
         }
 
-        .chapter-card:hover .cover-img img {
-            transform: scale(1.05);
-            filter: brightness(0.8) grayscale(0%);
-        }
+        .chapter-card:hover .cover-section img { filter: brightness(0.7); transform: scale(1.03); }
 
-        /* TEXTO SOBRE LA PORTADA (INFORMACIÓN ANTES DE ENTRAR) */
         .cover-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px;
-            background: linear-gradient(to top, rgba(1, 2, 4, 1), transparent);
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 35px;
+            background: linear-gradient(to top, var(--bg), transparent);
         }
 
-        .chapter-num {
-            font-family: 'Syne', sans-serif;
-            color: var(--accent);
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            display: block;
-            margin-bottom: 10px;
-        }
+        .cap-label { font-family: 'Syne', sans-serif; color: var(--accent); font-size: 0.8rem; letter-spacing: 4px; }
+        .cap-title { font-family: 'Syne', sans-serif; font-size: 1.7rem; text-transform: uppercase; margin: 5px 0; }
+        .teaser { color: rgba(255,255,255,0.5); font-size: 0.9rem; max-width: 85%; }
 
-        .chapter-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .teaser-text {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            max-width: 80%;
-            line-height: 1.4;
-        }
-
-        /* CONTENIDO EXPANDIDO (TEXTO + IMAGEN VERTICAL) */
-        .expanded-content {
+        /* CONTENIDO EXPANDIBLE */
+        .expanded-box {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.8s ease-in-out;
         }
 
-        .inner-flex {
-            display: flex;
+        .inner-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
             gap: 40px;
-            padding: 0 40px 40px 40px;
+            padding: 20px 40px 40px 40px;
             align-items: start;
         }
 
-        .vertical-holder {
-            width: 280px; /* Columna para imagen vertical */
-            flex-shrink: 0;
-            aspect-ratio: 9 / 16;
+        .vertical-image {
+            width: 100%;
+            aspect-ratio: 9/16;
             background: rgba(255,255,255,0.02);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--border);
         }
 
-        .vertical-holder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .vertical-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .text-body { color: #ccc; font-size: 1.05rem; }
+        .text-body p { margin-bottom: 20px; }
+        .text-body ul { list-style: none; padding-left: 5px; }
+        .text-body li { margin-bottom: 12px; border-left: 2px solid var(--accent); padding-left: 15px; }
+
+        /* Icono + / - */
+        .toggle-icon {
+            position: absolute; top: 30px; right: 30px;
+            width: 35px; height: 35px; border: 1px solid var(--border);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.4); z-index: 5; transition: 0.3s;
         }
 
-        .full-text {
-            flex: 1;
-            color: #ccc;
-            font-size: 1.05rem;
-            padding-top: 10px;
-        }
+        .active .expanded-box { max-height: 1200px; }
+        .active .toggle-icon { transform: rotate(45deg); border-color: var(--accent); color: var(--accent); }
 
-        .full-text p { margin-bottom: 20px; }
+        footer { text-align: center; padding: 60px 0; opacity: 0.2; font-size: 0.7rem; letter-spacing: 5px; }
 
-        /* Icono de estado */
-        .status-btn {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-
-        /* Clase Activa */
-        .active-card .expanded-content { max-height: 1500px; }
-        .active-card .status-btn { border-color: var(--accent); color: var(--accent); }
-
-        footer { text-align: center; margin-top: 100px; opacity: 0.2; letter-spacing: 5px; font-size: 0.7rem; }
-
-        @media (max-width: 768px) {
-            .inner-flex { flex-direction: column; }
-            .vertical-holder { width: 100%; aspect-ratio: 16 / 9; }
-            .cover-img { height: 220px; }
-            .chapter-title { font-size: 1.4rem; }
+        @media (max-width: 800px) {
+            .inner-content { grid-template-columns: 1fr; }
+            .vertical-image { aspect-ratio: 16/9; }
         }
     </style>
 </head>
@@ -193,28 +142,27 @@
         
         <header class="hero">
             <h1>El Peso Invisible</h1>
-            <p style="color: var(--accent); letter-spacing: 5px; margin-top: 15px;">S&S PERFORMANCE MENTAL</p>
+            <p style="color: var(--accent); letter-spacing: 6px; margin-top: 15px; font-weight: 600;">S&S PERFORMANCE MENTAL</p>
         </header>
 
         <div class="chapter-wrapper">
-            <div class="chapter-card" onclick="toggleChapter(this)">
-                <div class="status-btn">+</div>
-                <div class="cover-img">
-                    <img src="PORTADA_1.jpg" alt="Inicio">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="1.jpg" alt="Inicio">
                     <div class="cover-overlay">
-                        <span class="chapter-num">CAPÍTULO I</span>
-                        <h2 class="chapter-title">El inicio del camino</h2>
-                        <p class="teaser-text">Todo comienza con una chispa. Una emoción genuina por superar límites y descubrir el potencial libre de presiones.</p>
+                        <span class="cap-label">CAPÍTULO I</span>
+                        <h2 class="cap-title">El inicio del camino</h2>
+                        <p class="teaser">Todo comienza con una chispa, una emoción genuina y la curiosidad por superar límites.</p>
                     </div>
                 </div>
-                <div class="expanded-content">
-                    <div class="inner-flex">
-                        <div class="vertical-holder">
-                            <img src="VERTICAL_1.jpg" alt="Imagen Vertical">
-                        </div>
-                        <div class="full-text">
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V1.jpg" alt=""></div>
+                        <div class="text-body">
                             <p>En el mundo del deporte, todo comienza con una chispa. Una emoción genuina, una curiosidad por moverse, por competir, por superar límites.</p>
                             <p>En los primeros momentos, el deporte se vive como un juego, como una forma de expresión libre donde no existen presiones externas. El cuerpo responde con facilidad, la mente acompaña con entusiasmo y cada entrenamiento es una oportunidad para aprender.</p>
+                            <p>En esta etapa, la motivación surge de manera natural, impulsada por el disfrute y la pasión. Sin embargo, con el tiempo, ese mismo camino comienza a transformarse.</p>
                         </div>
                     </div>
                 </div>
@@ -222,24 +170,23 @@
         </div>
 
         <div class="chapter-wrapper">
-            <div class="chapter-card" onclick="toggleChapter(this)">
-                <div class="status-btn">+</div>
-                <div class="cover-img">
-                    <img src="PORTADA_2.jpg" alt="Transformación">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="2.jpg" alt="Exigencia">
                     <div class="cover-overlay">
-                        <span class="chapter-num">CAPÍTULO II</span>
-                        <h2 class="chapter-title">Transformación en exigencia</h2>
-                        <p class="teaser-text">Cuando el rendimiento deja de ser una experiencia personal para convertirse en una medida frente a los demás.</p>
+                        <span class="cap-label">CAPÍTULO II</span>
+                        <h2 class="cap-title">De juego a exigencia</h2>
+                        <p class="teaser">Cuando las evaluaciones y la presión externa transforman el carácter lúdico en una responsabilidad.</p>
                     </div>
                 </div>
-                <div class="expanded-content">
-                    <div class="inner-flex">
-                        <div class="vertical-holder">
-                            <img src="VERTICAL_2.jpg" alt="Imagen Vertical">
-                        </div>
-                        <div class="full-text">
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V2.jpg" alt=""></div>
+                        <div class="text-body">
                             <p>A medida que el deportista progresa, el entorno cambia. Aparecen las evaluaciones, las comparaciones y los objetivos más exigentes.</p>
-                            <p>El rendimiento deja de ser solo una experiencia personal y comienza a ser medido frente a otros. Entrenadores, familias y compañeros influyen en la forma en que el deportista percibe su propio valor.</p>
+                            <p>El rendimiento deja de ser solo una experiencia personal y comienza a ser medido frente a otros. Entrenadores, familias y compañeros influyen en la percepción del propio valor.</p>
+                            <p>Ya no basta con disfrutar; ahora hay que cumplir y destacar. El deporte empieza a perder su carácter lúdico y se convierte en una responsabilidad.</p>
                         </div>
                     </div>
                 </div>
@@ -247,24 +194,23 @@
         </div>
 
         <div class="chapter-wrapper">
-            <div class="chapter-card" onclick="toggleChapter(this)">
-                <div class="status-btn">+</div>
-                <div class="cover-img">
-                    <img src="PORTADA_3.jpg" alt="Desgaste">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="3.jpg" alt="Desgaste">
                     <div class="cover-overlay">
-                        <span class="chapter-num">CAPÍTULO III</span>
-                        <h2 class="chapter-title">El desgaste progresivo</h2>
-                        <p class="teaser-text">Un proceso silencioso de tensiones acumuladas donde el cuerpo responde, pero la mente empieza a resistirse.</p>
+                        <span class="cap-label">CAPÍTULO III</span>
+                        <h2 class="cap-title">El desgaste progresivo</h2>
+                        <p class="teaser">Un proceso silencioso construido por tensiones acumuladas y rutinas repetitivas.</p>
                     </div>
                 </div>
-                <div class="expanded-content">
-                    <div class="inner-flex">
-                        <div class="vertical-holder">
-                            <img src="VERTICAL_3.jpg" alt="Imagen Vertical">
-                        </div>
-                        <div class="full-text">
-                            <p>La desmotivación no aparece de forma repentina. Es un proceso silencioso, construido a partir de pequeñas tensiones acumuladas.</p>
-                            <p>El cansancio físico, la exigencia mental y la falta de descanso adecuado comienzan a generar desgaste. Lo que antes generaba emoción, ahora se percibe como una obligación.</p>
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V3.jpg" alt=""></div>
+                        <div class="text-body">
+                            <p>La desmotivación no aparece de forma repentina. Es un proceso silencioso de pequeñas tensiones acumuladas.</p>
+                            <p>El cansancio físico, la exigencia mental y la falta de descanso generan desgaste. El cuerpo responde, pero la mente empieza a resistirse.</p>
+                            <p>Lo que antes generaba emoción, ahora se percibe como obligación. El compromiso sigue presente, pero la conexión emocional se debilita.</p>
                         </div>
                     </div>
                 </div>
@@ -272,24 +218,22 @@
         </div>
 
         <div class="chapter-wrapper">
-            <div class="chapter-card" onclick="toggleChapter(this)">
-                <div class="status-btn">+</div>
-                <div class="cover-img">
-                    <img src="PORTADA_4.jpg" alt="Sentido">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="4.jpg" alt="Sentido">
                     <div class="cover-overlay">
-                        <span class="chapter-num">CAPÍTULO IV</span>
-                        <h2 class="chapter-title">La pérdida de sentido</h2>
-                        <p class="teaser-text">Cuando el deportista olvida el "por qué" comenzó y las metas se vuelven exclusivamente externas.</p>
+                        <span class="cap-label">CAPÍTULO IV</span>
+                        <h2 class="cap-title">La pérdida de sentido</h2>
+                        <p class="teaser">Cuando el esfuerzo pierde significado y las metas se vuelven exclusivamente externas.</p>
                     </div>
                 </div>
-                <div class="expanded-content">
-                    <div class="inner-flex">
-                        <div class="vertical-holder">
-                            <img src="VERTICAL_4.jpg" alt="Imagen Vertical">
-                        </div>
-                        <div class="full-text">
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V4.jpg" alt=""></div>
+                        <div class="text-body">
                             <p>El deportista deja de recordar por qué comenzó. Las metas se vuelven externas: ganar, cumplir expectativas, evitar críticas.</p>
-                            <p>Cuando el sentido interno desaparece, el esfuerzo pierde significado. Aparecen pensamientos como el cansancio mental, la duda constante y la falta de interés por continuar.</p>
+                            <p>Cuando el sentido interno desaparece, el esfuerzo pierde significado. El deporte se percibe como una imposición, generando pensamientos de duda constante y falta de interés.</p>
                         </div>
                     </div>
                 </div>
@@ -297,29 +241,102 @@
         </div>
 
         <div class="chapter-wrapper">
-            <div class="chapter-card" onclick="toggleChapter(this)">
-                <div class="status-btn">+</div>
-                <div class="cover-img">
-                    <img src="PORTADA_5.jpg" alt="Factores">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="5.jpg" alt="Factores">
                     <div class="cover-overlay">
-                        <span class="chapter-num">CAPÍTULO V</span>
-                        <h2 class="chapter-title">Factores de Intensidad</h2>
-                        <p class="teaser-text">Exceso de presión, falta de reconocimiento y lesiones: detonantes del desgaste psicológico.</p>
+                        <span class="cap-label">CAPÍTULO V</span>
+                        <h2 class="cap-title">Factores que intensifican</h2>
+                        <p class="teaser">Detonantes críticos que aceleran el desgaste psicológico y emocional.</p>
                     </div>
                 </div>
-                <div class="expanded-content">
-                    <div class="inner-flex">
-                        <div class="vertical-holder">
-                            <img src="VERTICAL_5.jpg" alt="Imagen Vertical">
-                        </div>
-                        <div class="full-text">
-                            <p>La desmotivación puede verse influenciada por:</p>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 10px;">• Exceso de presión externa.</li>
-                                <li style="margin-bottom: 10px;">• Falta de reconocimiento.</li>
-                                <li style="margin-bottom: 10px;">• Lesiones o frustraciones constantes.</li>
-                                <li style="margin-bottom: 10px;">• Sobrecarga de entrenamiento.</li>
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V5.jpg" alt=""></div>
+                        <div class="text-body">
+                            <ul>
+                                <li><strong>Exceso de presión externa:</strong> Expectativas elevadas sin apoyo emocional.</li>
+                                <li><strong>Falta de reconocimiento:</strong> Esfuerzos que no son valorados.</li>
+                                <li><strong>Lesiones o frustraciones:</strong> Interrupciones en el progreso.</li>
+                                <li><strong>Comparación constante:</strong> Sentirse inferior frente a otros.</li>
+                                <li><strong>Sobrecarga:</strong> Ausencia de equilibrio entre esfuerzo y descanso.</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-wrapper">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="6.jpg" alt="Señales">
+                    <div class="cover-overlay">
+                        <span class="cap-label">CAPÍTULO VI</span>
+                        <h2 class="cap-title">Señales del agotamiento</h2>
+                        <p class="teaser">Indicadores claros de que el equilibrio del deportista se ha alterado.</p>
+                    </div>
+                </div>
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V6.jpg" alt=""></div>
+                        <div class="text-body">
+                            <p>El cuerpo y la mente envían señales claras:</p>
+                            <ul>
+                                <li>Disminución del rendimiento.</li>
+                                <li>Falta de concentración.</li>
+                                <li>Desinterés por entrenar.</li>
+                                <li>Cambios en el estado de ánimo.</li>
+                                <li>Sensación de cansancio constante.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-wrapper">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="7.jpg" alt="Abandono">
+                    <div class="cover-overlay">
+                        <span class="cap-label">CAPÍTULO VII</span>
+                        <h2 class="cap-title">El riesgo del abandono</h2>
+                        <p class="teaser">La consecuencia última de no atender la desmotivación a tiempo.</p>
+                    </div>
+                </div>
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V7.jpg" alt=""></div>
+                        <div class="text-body">
+                            <p>Cuando la desmotivación no se atiende, puede llevar al abandono. El deportista reduce su compromiso y, finalmente, deja la práctica.</p>
+                            <p>No siempre es falta de talento; suele ser el reflejo de no haber mantenido el equilibrio entre exigencia y bienestar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-wrapper">
+            <div class="chapter-card" onclick="toggleCap(this)">
+                <div class="toggle-icon">+</div>
+                <div class="cover-section">
+                    <img src="8.jpg" alt="Reconstrucción">
+                    <div class="cover-overlay">
+                        <span class="cap-label">CAPÍTULO VIII</span>
+                        <h2 class="cap-title">Reconstrucción de la motivación</h2>
+                        <p class="teaser">Recuperar la esencia y volver a disfrutar del proceso por encima del resultado.</p>
+                    </div>
+                </div>
+                <div class="expanded-box">
+                    <div class="inner-content">
+                        <div class="vertical-image"><img src="V8.jpg" alt=""></div>
+                        <div class="text-body">
+                            <p>Superar la desmotivación implica un proceso de reconexión profunda. Recuperar el sentido, establecer metas realistas y reconocer cada logro.</p>
+                            <p>El acompañamiento emocional y el equilibrio entre entrenamiento y descanso son claves fundamentales para recuperar la esencia del deporte.</p>
                         </div>
                     </div>
                 </div>
@@ -330,15 +347,14 @@
     </div>
 
     <script>
-        function toggleChapter(card) {
-            // Cerrar otros si se desea (opcional)
-            // document.querySelectorAll('.chapter-card').forEach(c => {
-            //     if(c !== card) c.classList.remove('active-card');
-            // });
-
-            card.classList.toggle('active-card');
-            const btn = card.querySelector('.status-btn');
-            btn.textContent = card.classList.contains('active-card') ? '−' : '+';
+        function toggleCap(card) {
+            card.classList.toggle('active');
+            const box = card.querySelector('.expanded-box');
+            if (card.classList.contains('active')) {
+                box.style.maxHeight = box.scrollHeight + "px";
+            } else {
+                box.style.maxHeight = null;
+            }
         }
     </script>
 </body>
