@@ -344,7 +344,55 @@
         </div>
 
         <footer>&copy; S&S PERFORMANCE MENTAL | 2026</footer>
+        
     </div>
+
+    <style>
+    /* Estilos basados en tu diseño de "El Peso Invisible" */
+    .link-k-style {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 18px 40px;
+        background: rgba(255, 255, 255, 0.05); /* --glass */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* --border */
+        border-radius: 50px;
+        color: #fff;
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        backdrop-filter: blur(12px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .link-k-style:hover {
+        border-color: #00f2ff; /* --accent */
+        box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        transform: translateY(-3px);
+    }
+
+    /* Efecto de brillo interior */
+    .link-k-style::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: 0.5s;
+    }
+
+    .link-k-style:hover::before {
+        left: 100%;
+    }
+</style>
+
+<a href="https://kahoot.it/solo/ed48c94b-ba99-4c96-aba1-e3b0d95cad7e_1775921373235" class="link-k-style">
+    Continuar Lectura
+</a>
 
     <script>
         function toggleCap(card) {
