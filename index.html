@@ -348,7 +348,16 @@
     </div>
 
     <style>
-    /* Estilos basados en tu diseño de "El Peso Invisible" */
+    /* 1. Contenedor para centrar el botón */
+    .contenedor-btn-centrado {
+        display: flex;
+        justify-content: center; /* Centrado horizontal */
+        align-items: center;     /* Centrado vertical (si tuviera altura) */
+        width: 100%;             /* Ocupa todo el ancho */
+        margin: 40px 0;          /* Espacio arriba y abajo del botón */
+    }
+
+    /* 2. Estilos de la PRIMERA OPCIÓN (Cyber-Link) */
     .link-k-style {
         display: inline-flex;
         align-items: center;
@@ -358,29 +367,40 @@
         border: 1px solid rgba(255, 255, 255, 0.1); /* --border */
         border-radius: 50px;
         color: #fff;
+        
+        /* Asegúrate de que estas fuentes estén cargadas en tu <head> */
         font-family: 'Syne', sans-serif;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.9rem;
+        
         transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px); /* Compatibilidad Safari */
         position: relative;
         overflow: hidden;
+        
+        /* Evita que el texto se rompa en varias líneas */
+        white-space: nowrap; 
     }
 
+    /* Efecto Hover (al pasar el mouse) */
     .link-k-style:hover {
-        border-color: #00f2ff; /* --accent */
+        border-color: #00f2ff; /* --accent de tu página */
         box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         transform: translateY(-3px);
+        color: #00f2ff; /* El texto también cambia ligeramente */
     }
 
-    /* Efecto de brillo interior */
+    /* Efecto de brillo interior (pseudo-elemento) */
     .link-k-style::before {
         content: '';
         position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
+        top: 0; 
+        left: -100%;
+        width: 100%; 
+        height: 100%;
         background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
         transition: 0.5s;
     }
@@ -390,9 +410,11 @@
     }
 </style>
 
-<a href="https://kahoot.it/solo/ed48c94b-ba99-4c96-aba1-e3b0d95cad7e_1775921373235" class="link-k-style">
-    Continuar Lectura
-</a>
+<div class="contenedor-btn-centrado">
+    <a href="https://create.kahoot.it/share/motivacion-y-desmotivacion-deportiva/6c8e3c91-a7b0-41e4-b496-b94340e0908c" class="link-k-style">
+        PRUEBA TUS CONOCIMIENTOS
+    </a>
+</div>
 
     <script>
         function toggleCap(card) {
